@@ -1,6 +1,5 @@
+import 'package:daasd12/screens/dashbord/darshbord_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
 import '../components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
@@ -9,18 +8,17 @@ class MainScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: Row(
-        children: [
-          Expanded(
-            child: SideMenu(),
-          ),
-          Expanded(
-            flex: 5,
-            child: Container(
-              color: Colors.blue,
-            ),
-          ),
-        ],
-      )),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: SideMenu(),
+              ),
+              Expanded(
+                flex: 5,
+                child: DashordScreen(),
+              ),
+            ],
+          )),
     );
   }
 }
