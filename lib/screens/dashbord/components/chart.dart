@@ -15,7 +15,8 @@ class Chart extends StatelessWidget {
 
     List<PieChartSectionData> paicharSelectionData = [
       PieChartSectionData(color: primaryColor, radius: 25, value: 25),
-      PieChartSectionData(color: Colors.black, radius: 35, value: 25),
+      PieChartSectionData(color: Colors.amber, radius: 35, value: 25),
+      PieChartSectionData(color: Colors.blueAccent, radius: 45, value: 45),
       PieChartSectionData(color: Colors.blueAccent, radius: 45, value: 45),
     ];
     return SizedBox(
