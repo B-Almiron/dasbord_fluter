@@ -2,6 +2,8 @@ import 'package:daasd12/constants.dart';
 import 'package:daasd12/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:daasd12/controllers/MenuController.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,13 +19,23 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: bgColor,
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme).apply(bodyColor: Colors.white),
-        canvasColor: secondaryColor
+          scaffoldBackgroundColor: bgColor,
+          textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
+              .apply(bodyColor: Colors.white),
+          canvasColor: secondaryColor),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => MenuControllerr(),
+            ),
+        ],
+        child: MainScreen(),
 
       ),
-      home: MainScreen(),
+      
+      
     );
   }
 }
+
 

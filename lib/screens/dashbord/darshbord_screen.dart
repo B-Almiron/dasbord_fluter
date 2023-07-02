@@ -1,7 +1,9 @@
 import 'package:daasd12/constants.dart';
+import 'package:daasd12/responsive.dart';
 import 'package:flutter/material.dart';
 import 'components/header.dart';
 import 'components/my_fiels.dart';
+import 'components/recent_files.dart';
 import 'components/storagr_detail.dart';
 
 class DashordScreen extends StatelessWidget {
@@ -24,18 +26,33 @@ class DashordScreen extends StatelessWidget {
               // Darshboard parte izquierda
               Expanded(
                 flex: 5,
-                child: MyFiels(),
-              ),
+                child: Column(
+                  children: [
+                    MyFiels(),
+                    SizedBox(
+                      height: defaultPadding,
+                    ),
+                    RecentFiles(),
 
-              SizedBox(
-                width: defaultPadding,
+                    if (Responsive.isMobile(context))
+                      SizedBox(height: defaultPadding),
+
+                    // Darshboard parte derecha
+                    if (Responsive.isMobile(context)) StorageDetail()
+                  ],
+                ),
               ),
+              if (!Responsive.isMobile(context))
+                SizedBox(
+                  width: defaultPadding,
+                ),
 
               // Darshboard parte derecha
-              Expanded(
-                flex: 2,
-                child: StorageDetail(),
-              ),
+              if (!Responsive.isMobile(context))
+                Expanded(
+                  flex: 2,
+                  child: StorageDetail(),
+                ),
             ],
           )
         ]),
@@ -43,4 +60,3 @@ class DashordScreen extends StatelessWidget {
     );
   }
 }
-

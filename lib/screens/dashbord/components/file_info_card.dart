@@ -42,9 +42,10 @@ class FileInfoCard extends StatelessWidget {
                   color: info.color,
                 ),
               ),
-              Icon(
-                Icons.more_vert,
-                color: Colors.white54,
+              IconButton(
+                onPressed: (){},
+                icon: Icon(Icons.more_vert ,)
+
               )
             ],
           ),
