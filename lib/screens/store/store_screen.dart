@@ -7,7 +7,7 @@ import '../dashbord/components/recent_files.dart';
 
 class StoreScreen extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return SafeArea(
       child: SingleChildScrollView(
         padding: EdgeInsets.all(defaultPadding),
