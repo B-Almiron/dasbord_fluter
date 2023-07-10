@@ -1,41 +1,54 @@
 import 'package:flutter/material.dart';
 
-class NotificationTable extends StatefulWidget {
-  @override
-  _NotificationTableState createState() => _NotificationTableState();
+import '../../../constants.dart';
+
+class NotificationData {
+  final String message;
+
+  NotificationData(this.message);
 }
 
-class _NotificationTableState extends State<NotificationTable> {
-  List<String> notifications = [];
+class NotificationManager {
+  static List<NotificationData> notifications = [];
+  static ValueNotifier<List<NotificationData>> notificationsNotifier =
+      ValueNotifier(notifications);
 
-  void addNotification(String notification) {
-    setState(() {
-      notifications.add(notification);
-    });
+  static void addNotification(String message) {
+    notifications.add(NotificationData(message));
+    notificationsNotifier.value = notifications;
   }
+}
 
+class NotificationsTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Tabla de Notificaciones'),
+    return Container(
+      padding: EdgeInsets.all(defaultPadding),
+      decoration: BoxDecoration(
+        color: secondaryColor,
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
-      body: ListView.builder(
-        itemCount: notifications.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(notifications[index]),
-          );
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Simulación de cambio exitoso
-          String newNotification = 'Cambio exitoso ${notifications.length + 1}';
-          addNotification(newNotification);
-        },
-        child: Icon(Icons.add),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Notifications",
+            style: Theme.of(context).textTheme.subtitle1,
+          ),
+          SizedBox(height: defaultPadding),
+          ListView.builder(
+            shrinkWrap: true,
+            itemCount: NotificationManager.notifications.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(NotificationManager.notifications[index].message),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
 }
+
+

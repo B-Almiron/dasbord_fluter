@@ -14,29 +14,44 @@ import '../profile/profilse_screen.dart';
 import '../settings/settings_screen.dart';
 
 class MainScreen extends StatelessWidget {
+
+
+  final String correo;
+  final String userId;
+
+  MainScreen({required this.correo, required this.userId});
+
   @override
   Widget build(BuildContext context) {
+    final menuController = Provider.of<MenuControlador>(context, listen: false);
+    menuController.loggedInUserCorreo = correo;
+
+    final menuController2 = Provider.of<MenuControlador>(context, listen: false);
+    menuController2.loggedInUserID = userId;
+
     return Scaffold(
       key: context.read<MenuControlador>().scaffoldKey,
       drawer: SideMenu(),
       body: SafeArea(
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (Responsive.isDesktop(context)) 
-              Expanded(
-                child: SideMenu(),
-              ),
-              Expanded(
-                flex: 5,
-                child: _buildScreen(context),
-              ),
-            ],
-          )),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          
+          if (Responsive.isDesktop(context))
+            Expanded(
+              child: SideMenu(),
+            ),
+          Expanded(
+            flex: 5,
+            child: _buildScreen(context),
+          ),
+        ],
+      ),
+      ),
     );
   }
 
-   Widget _buildScreen(BuildContext context) {
+  Widget _buildScreen(BuildContext context) {
     final menuController = Provider.of<MenuControlador>(context);
     switch (menuController.selectedMenu) {
       case MenuItems.dashboard:

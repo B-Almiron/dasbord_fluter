@@ -1,6 +1,9 @@
 import 'package:daasd12/constants.dart';
 import 'package:daasd12/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../controllers/MenuController.dart';
+import '../documents/components/files_product.dart';
 import 'components/header.dart';
 import 'components/my_fiels.dart';
 import 'components/recent_files.dart';
@@ -32,7 +35,12 @@ class DashordScreen extends StatelessWidget {
                     SizedBox(
                       height: defaultPadding,
                     ),
-                    RecentFiles(),
+                    Consumer<MenuControlador>(
+              builder: (context, menuController, child) {
+                final correo = menuController.loggedInUserCorreo;
+                return RecentFilesProductos(loggedInUserCorreo: correo);
+              },
+            ),
 
                     if (Responsive.isMobile(context))
                       SizedBox(height: defaultPadding),

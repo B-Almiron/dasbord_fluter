@@ -21,7 +21,7 @@ class NotificaScreen extends StatelessWidget {
           SizedBox(
             height: defaultPadding,
           ),
-          NotificationTable()
+          NotificationsTable()
 
         ]),
       ),
