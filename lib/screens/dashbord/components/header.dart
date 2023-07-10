@@ -17,14 +17,20 @@ class Header extends StatelessWidget {
         if (!Responsive.isDesktop(context)) 
         IconButton(
           onPressed: () {
-              context.read<MenuControllerr>().controlMenu();
+              context.read<MenuControlador>().controlMenu();
             }, 
           icon: Icon(Icons.menu)),
         if (!Responsive.isMobile(context))
-        Text(
-          "Dashborad",
-          style: Theme.of(context).textTheme.headline6,
-        ),
+        
+        Consumer<MenuControlador>(
+            builder: (context, menuController, _) {
+              String menuText = getMenuText(menuController.selectedMenu);
+              return Text(
+                menuText,
+                style: Theme.of(context).textTheme.headline6,
+              );
+            },
+          ),
         if (!Responsive.isMobile(context))
         Spacer(flex: Responsive.isDesktop(context) ? 2 : 1,),
         Expanded(
@@ -33,6 +39,29 @@ class Header extends StatelessWidget {
         ProfileCard()
       ],
     );
+  }
+
+   String getMenuText(MenuItems selectedItem) {
+    switch (selectedItem) {
+      case MenuItems.dashboard:
+        return "Dashboard";
+      case MenuItems.docs:
+        return "Documents";
+      case MenuItems.notification:
+        return "Notifications";
+      case MenuItems.task:
+        return "Tasks";
+      case MenuItems.tran:
+        return "Transactions";
+      case MenuItems.store:
+        return "Store";
+      case MenuItems.profile:
+        return "Profile";
+      case MenuItems.settings:
+        return "Settings";
+      default:
+        return "";
+    }
   }
 }
 
@@ -68,7 +97,6 @@ class ProfileCard extends StatelessWidget {
             child: Text("Maria benet"),
           ),
           
-          Icon(Icons.keyboard_arrow_down)
         ],
       ),
     );
