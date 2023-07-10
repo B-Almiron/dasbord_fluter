@@ -1,53 +1,34 @@
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../constants.dart';
-import '../../responsive.dart';
+import '../../controllers/MenuController.dart';
 import '../dashbord/components/header.dart';
-import '../dashbord/components/storagr_detail.dart';
-
+import 'components/files_product.dart';
+import 'components/files_user.dart';
 
 class DocumentScreen extends StatelessWidget {
   @override
-   Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
         padding: EdgeInsets.all(defaultPadding),
-        child: Column(children: [
-          // Darshboard parte superior
-          Header(),
+        child: Column(
+          children: [
+            
 
-          SizedBox(
-            height: defaultPadding,
-          ),
-
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Darshboard parte izquierda
-              Expanded(
-                flex: 5,
-                child: Column(
-                  children: [
-
-                    
-                  ],
-                ),
-              ),
-              if (!Responsive.isMobile(context))
-                SizedBox(
-                  width: defaultPadding,
-                ),
-
-              // Darshboard parte derecha
-              if (!Responsive.isMobile(context))
-                Expanded(
-                  flex: 2,
-                  child: StorageDetail(),
-                ),
-            ],
-          )
-        ]),
+            Header(),
+            SizedBox(height: defaultPadding),
+            RecentFilesprueba(),
+            SizedBox(height: defaultPadding),
+            Consumer<MenuControlador>(
+              builder: (context, menuController, child) {
+                final correo = menuController.loggedInUserCorreo;
+                return RecentFilesProductos(loggedInUserCorreo: correo);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

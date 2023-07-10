@@ -1,6 +1,7 @@
 import 'package:daasd12/constants.dart';
 import 'package:flutter/material.dart';
 
+import 'chart copy.dart';
 import 'chart.dart';
 import 'storage_info_card.dart';
 
@@ -31,7 +32,9 @@ class StorageDetail extends StatelessWidget {
           SizedBox(
             height: defaultPadding,
           ),
-          Chart(),
+
+          
+          Chart22222(),
           StorageInfoCard(
             amountOfFiles: '1.3 GB',
             numOfFiels: 1335,

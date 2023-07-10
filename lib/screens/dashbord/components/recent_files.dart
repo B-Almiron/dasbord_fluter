@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../constants.dart';
 import '../../../models/RecentFile.dart';
+import '../../notificat/components/table_notifi.dart';
 
 class RecentFiles extends StatelessWidget {
   const RecentFiles({
@@ -159,8 +160,12 @@ void _showSuccessSnackBar(BuildContext context) {
   ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       backgroundColor: Colors.green,
-      content: Text("Changes saved successfully"),
+      content: Text("Se creo un edito un dato"),
       duration: Duration(seconds: 2),
     ),
+    
   );
+  NotificationManager.addNotification("Se creo un edito un dato");
 }
+
+

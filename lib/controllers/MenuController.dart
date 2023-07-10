@@ -22,6 +22,30 @@ class MenuControlador extends ChangeNotifier {
 
   MenuItems get selectedMenu => _selectedMenu;
   
+  
+  String _loggedInUserCorreo = '';
+
+  String get loggedInUserCorreo => _loggedInUserCorreo;
+
+  set loggedInUserCorreo(String correo) {
+    _loggedInUserCorreo = correo;
+    notifyListeners();
+  }
+
+
+  String _loggedInUserID = '';
+
+  String get loggedInUserID => _loggedInUserID;
+
+  set loggedInUserID(String userId) {
+    _loggedInUserID = userId;
+    notifyListeners();
+  }
+
+
+
+
+
   void setSelectedMenu(MenuItems menu) {
     _selectedMenu = menu;
     notifyListeners();

@@ -31,7 +31,7 @@ class BarChartSample5 extends StatefulWidget {
 }
 
 class BarChartSample5State extends State<BarChartSample5> {
-  static const double barWidth = 50;
+  static const double barWidth = 33;
   static const shadowOpacity = 0.2;
   static const mainItems = <int, List<double>>{
     0: [2, 3, 2.5, 8],
@@ -277,7 +277,7 @@ class BarChartSample5State extends State<BarChartSample5> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 0.8,
+      aspectRatio: 1.5,
       child: Padding(
         padding: const EdgeInsets.only(top: 16),
         child: BarChart(

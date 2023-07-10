@@ -31,16 +31,7 @@ class MyApp extends StatelessWidget {
             create: (context) => MenuControlador(),
             ),
         ],
-        child: MultiProvider(
-                        providers: [
-                          ChangeNotifierProvider(
-                            create: (context) => MenuControlador(),
-                          ),
-                        ],
-                        child: MainScreen(),
-                      ),
-        
-        // LoginScreen(),
+        child:  LoginScreen(),
 
       ),
       

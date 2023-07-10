@@ -82,6 +82,8 @@ class _Column1State extends State<Column1> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+
+
         Text(
           'Columna 1',
           style: TextStyle(fontSize: 18),
@@ -104,6 +106,8 @@ class _Column1State extends State<Column1> {
             );
           }).toList(),
         ),
+
+        
       ],
     );
   }
@@ -136,6 +140,7 @@ class _Column2State extends State<Column2> {
     'Subelemento 1',
     'Subelemento 2',
     'Subelemento 3',
+    "asdasdasdsd"
   ];
 
   @override
