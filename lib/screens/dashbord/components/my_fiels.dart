@@ -19,6 +19,7 @@ class MyFiels extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          /*
           children: [
             Text(
               "Mi files ",
@@ -34,6 +35,8 @@ class MyFiels extends StatelessWidget {
                 icon: Icon(Icons.add),
                 label: Text("Añadir"))
           ],
+          */
+
         ),
         SizedBox(
           height: defaultPadding,

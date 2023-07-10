@@ -1,4 +1,5 @@
 import 'package:daasd12/constants.dart';
+import 'package:daasd12/screens/login/login_screen.dart';
 import 'package:daasd12/screens/main/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,13 +24,23 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
               .apply(bodyColor: Colors.white),
           canvasColor: secondaryColor),
+      
       home: MultiProvider(
         providers: [
           ChangeNotifierProvider(
-            create: (context) => MenuControllerr(),
+            create: (context) => MenuControlador(),
             ),
         ],
-        child: MainScreen(),
+        child: MultiProvider(
+                        providers: [
+                          ChangeNotifierProvider(
+                            create: (context) => MenuControlador(),
+                          ),
+                        ],
+                        child: MainScreen(),
+                      ),
+        
+        // LoginScreen(),
 
       ),
       
